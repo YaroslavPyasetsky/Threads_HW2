@@ -1,0 +1,28 @@
+package oop_les6_hw2;
+
+public class ThreadWithArraySum implements Runnable{
+	private int cur_thread;
+	private int[] intArray;
+	
+	public ThreadWithArraySum(int cur_thread, int[] intArray) {
+		super();
+		this.cur_thread = cur_thread;
+		this.intArray = intArray;
+	}
+
+	public int calcSum(){
+		int sum = 0;
+		for (int i = 0; i < intArray.length; i++) {
+			if (intArray[i] % cur_thread == 0) {
+				sum +=intArray[i];
+			}
+		}
+		return sum;
+	} 
+	
+	@Override
+	public void run() {
+		System.out.println("Sum of thread "+cur_thread+" = "+ calcSum());
+	}
+
+}
